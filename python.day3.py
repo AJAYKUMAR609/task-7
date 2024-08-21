@@ -1,36 +1,20 @@
-
 # Task-7 create text file to get current time stamp
-# import module
 from datetime import datetime
 
-# get current date and time
-
+# Get current date and time
 current_datetime = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
 
-print("Current date & time : ", current_datetime)
+# Create a file object with extension
+file_name = f"{current_datetime}.txt"
 
-# convert datetime obj to string
+try:
+    with open(file_name, "w") as file:
+        file.write("Hello, this is The  content for the file.")
+        print(f"File '{file_name}' created successfully.")
+except IOError:
+    print(f"Error creating or writing to file '{file_name}'.")
 
-str_current_datetime = str(current_datetime)
-
-# create a file object along with extension
-
-file_name = str_current_datetime + ".txt"
-
-file = open(file_name, 'w')
-
-print("File created : ", file.name)
-
-file.close()
-
-# using time module
-
-import time
-
-# ts stores the time in seconds
-
-ts = time.time()
-
+# Read file content
 def read_file_content(filename):
     try:
         with open(filename, "r") as file:
